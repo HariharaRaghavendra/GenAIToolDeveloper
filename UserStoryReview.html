@@ -1,0 +1,124 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wards Dashboard View Request – User Story Quality Review</title>
+    <style>
+        body {font-family: Arial, sans-serif; margin: 20px; line-height: 1.5;}
+        h1 {color: #2E5C6E;}
+        table {border-collapse: collapse; width: 100%; max-width: 800px;}
+        th, td {border: 1px solid #ccc; padding: 8px 12px; text-align: left;}
+        th {background-color: #f2f2f2;}
+        .score {font-weight: bold; color: #2E5C6E;}
+        .overall {font-size: 1.2em; margin-top: 20px;}
+        .improvement {margin-top: 20px;}
+        .improvement h3 {color: #2E5C6E;}
+        .improvement ul {margin-left: 20px;}
+    </style>
+</head>
+<body>
+
+<h1>Wards Dashboard View Request – User Story Quality Review</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Description / Assessment</th>
+            <th>Score (out of 20)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Clarity</td>
+            <td>
+                The story text is ambiguous (“I want to wards dashboard view request”). It is not clear who the primary actor is, what exact view is required, or what “request” means in this context.  
+                The acceptance criterion is generic and does not specify which data elements or visualizations are expected.
+            </td>
+            <td class="score">8</td>
+        </tr>
+        <tr>
+            <td>Completeness</td>
+            <td>
+                Preconditions (e.g., user role, data‑source availability) are missing.  
+                No definition of “relevant data”, performance targets (e.g., load time < 2 seconds), or error handling.  
+                No non‑functional requirements (security, audit logging) are mentioned.
+            </td>
+            <td class="score">9</td>
+        </tr>
+        <tr>
+            <td>Business Value Alignment</td>
+            <td>
+                The story hints at operational efficiency (quick dashboard view) but does not tie the functionality to concrete healthcare outcomes such as patient flow optimisation, bed‑management, or compliance reporting.  
+                The value proposition is therefore weak.
+            </td>
+            <td class="score">12</td>
+        </tr>
+        <tr>
+            <td>Testability</td>
+            <td>
+                Because the expected data sets, visualisation types, and performance thresholds are not defined, QA cannot derive precise test cases.  
+                “Displayed correctly without delay” is subjective without measurable criteria.
+            </td>
+            <td class="score">10</td>
+        </tr>
+        <tr>
+            <td>Technical Feasibility</td>
+            <td>
+                Implementing a ward‑level dashboard is technically feasible within a typical EHR/Hospital Information System, but the story lacks details on data integration points (e.g., HL7 feeds, FHIR resources) and security constraints (HIPAA/POPIA).  
+                This makes effort estimation difficult.
+            </td>
+            <td class="score">13</td>
+        </tr>
+    </tbody>
+</table>
+
+<p class="overall"><strong>Overall Score: 52 / 100</strong></p>
+
+<div class="improvement">
+    <h3>Improvement Recommendations</h3>
+    <ul>
+        <li><strong>Clarity</strong>
+            <ul>
+                <li>Rewrite the “As a … I want … so that …” sentence to identify the specific role (e.g., “As a Ward Manager”) and the exact view (e.g., “real‑time occupancy and patient‑status dashboard”).</li>
+                <li>Define what “request” means – is it a data‑pull, a filter, or a report generation?</li>
+            </ul>
+        </li>
+        <li><strong>Completeness</strong>
+            <ul>
+                <li>List pre‑conditions: required user role, authentication method, data‑source availability, and any required configuration (e.g., ward‑mapping tables).</li>
+                <li>Specify the data elements (bed count, patient acuity, pending discharges, infection alerts) and visualisation types (charts, heat‑maps, KPI tiles).</li>
+                <li>Include non‑functional criteria: maximum load time (e.g., ≤ 2 seconds), accessibility standards (WCAG 2.1 AA), audit‑logging, and data‑encryption requirements.</li>
+            </ul>
+        </li>
+        <li><strong>Business Value Alignment</strong>
+            <ul>
+                <li>Connect the dashboard to measurable outcomes: reduced average length of stay, improved bed‑turnover, or compliance with infection‑control reporting.</li>
+                <li>Reference relevant regulations or internal KPIs that the dashboard will support (e.g., HIPAA audit trails, Ministry of Health reporting).</li>
+            </ul>
+        </li>
+        <li><strong>Testability</strong>
+            <ul>
+                <li>Translate acceptance criteria into concrete, testable statements, e.g.:
+                    <ul>
+                        <li>Given a user with the “Ward Manager” role, when they open the dashboard, the system displays the current occupancy count within 1.5 seconds.</li>
+                        <li>When a ward’s infection‑alert flag is set, a red badge appears on the corresponding tile.</li>
+                    </ul>
+                </li>
+                <li>Define negative test cases (e.g., unauthorized user receives an “Access Denied” message, stale data triggers a refresh warning).</li>
+            </ul>
+        </li>
+        <li><strong>Technical Feasibility</strong>
+            <ul>
+                <li>Identify integration points (FHIR Observation resources, HL7 ADT messages) and any required data‑transformation pipelines.</li>
+                <li>State security controls (role‑based access, encryption at rest/in‑transit) to assure compliance with HIPAA/POPIA.</li>
+                <li>Provide an initial effort estimate or a spike to validate data‑availability from the ward‑management system.</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>
+```
